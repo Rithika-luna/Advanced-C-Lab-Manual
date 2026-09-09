@@ -15,13 +15,49 @@ Else
 6.	Return 0
  
 Program:
+```
 
-//type your code here
+
+#include <stdio.h>
+
+struct eligible
+{
+    int age;
+    char n[50];
+};
+
+int main()
+{
+    struct eligible e;
+
+    printf("Enter name: ");
+    scanf("%s", e.n);
+
+    printf("Enter age: ");
+    scanf("%d", &e.age);
+
+    printf("\nName: %s", e.n);
+    printf("\nAge: %d", e.age);
+
+    if (e.age <= 6)
+        printf("\nVaccine Eligibility: No");
+    else
+        printf("\nVaccine Eligibility: Yes");
+
+    return 0;
+}
+
+
+```
+
+
 
 
 Output:
 
-//paste your output here
+
+<img width="1912" height="867" alt="image" src="https://github.com/user-attachments/assets/dbd7256f-44f3-4384-8721-2ef4d5d8b3d8" />
+
 
 
 Result:
@@ -43,16 +79,49 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
 
-//type your code here
+#include <stdio.h>
 
+struct numbers
+{
+    int a;
+    int b;
+};
+
+struct numbers add(struct numbers n)
+{
+    n.a = n.a + n.b;
+    return n;
+}
+
+int main()
+{
+    struct numbers n;
+
+    printf("Enter value of a: ");
+    scanf("%d", &n.a);
+
+    printf("Enter value of b: ");
+    scanf("%d", &n.b);
+
+    n = add(n);
+
+    printf("Sum = %d", n.a);
+
+    return 0;
+}
+
+
+```
 
 
 
 Output:
 
 
-//paste your output here
+<img width="1915" height="860" alt="image" src="https://github.com/user-attachments/assets/e332d325-e5a7-4537-ac7a-490f4f0b0a7e" />
+
 
 
 
@@ -86,22 +155,43 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
 
 
+#include <stdio.h>
 
+int main()
+{
+    FILE *p;
+    char name[50];
+
+    printf("Enter file name: ");
+    scanf("%s", name);
+
+    p = fopen(name, "w");
+
+    if (p == NULL)
+    {
+        printf("File cannot be created");
+        return 1;
+    }
+
+    printf("File opened successfully");
+    
+    fclose(p);
+
+    printf("\nFile closed successfully");
+
+    return 0;
+}
+
+
+```
 
 Output:
 
 
-//paste your output here
-
-
-
-
-
-
-
+<img width="1917" height="886" alt="image" src="https://github.com/user-attachments/assets/143cfd0d-e467-49da-9bab-bb5b7f61b04c" />
 
 
 
@@ -133,7 +223,50 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+
+#include <stdio.h>
+
+int main()
+{
+    FILE *p;
+    char name[50];
+    char text[100];
+    int num, i;
+
+    printf("Enter file name: ");
+    scanf("%s", name);
+
+    printf("Enter number of strings: ");
+    scanf("%d", &num);
+
+    p = fopen(name, "w");
+
+    if (p == NULL)
+    {
+        printf("File cannot be created");
+        return 1;
+    }
+
+    printf("File opened successfully\n");
+
+    for (i = 0; i < num; i++)
+    {
+        printf("Enter string %d: ", i + 1);
+        scanf(" %[^\n]", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+
+    printf("Data added successfully");
+    printf("\nFile closed successfully");
+
+    return 0;
+}
+
+```
 
 
 
@@ -141,7 +274,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="1916" height="877" alt="image" src="https://github.com/user-attachments/assets/35772d53-3a04-494f-8499-5d1006c3c3b1" />
+
 
 
 
@@ -187,7 +321,60 @@ Algorithm:
 
 Program:
 
-//type your code here
+
+```
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct subject
+{
+    char name[50];
+    int marks;
+};
+
+int main()
+{
+    struct subject *s;
+    int n, i;
+
+    printf("Enter number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+
+    if (s == NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter subject %d name: ", i + 1);
+        scanf("%s", s[i].name);
+
+        printf("Enter marks: ");
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\n--- Student Details ---\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Subject: %s\n", s[i].name);
+        printf("Marks: %d\n", s[i].marks);
+    }
+
+    free(s);
+
+    return 0;
+}
+
+
+```
+
 
 
 
@@ -195,7 +382,8 @@ Program:
 Output:
 
 
-//paste your output here
+
+![Uploading image.png…]()
 
 
 
